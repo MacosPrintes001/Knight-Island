@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "448467788927",
+    "project_id": "knight-island",
+    "storage_bucket": "knight-island.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448467788927:android:b09096934b19a240f1cb4a",
+        "android_client_info": {
+          "package_name": "com.example.knightisland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448467788927-fr25432op335p9jn938kca1kbluje6k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxJU9URQ_MKaB_vq0yy6T5SyITg_rSbUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448467788927-fr25432op335p9jn938kca1kbluje6k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
