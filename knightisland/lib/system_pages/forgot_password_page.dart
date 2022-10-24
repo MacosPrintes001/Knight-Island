@@ -10,7 +10,6 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-
   final _emailController = TextEditingController();
 
   @override
@@ -20,35 +19,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   Future passwordReset() async {
-    try{ 
+    try {
       await FirebaseAuth.instance
-      .sendPasswordResetEmail(email: _emailController.text.trim());
+          .sendPasswordResetEmail(email: _emailController.text.trim());
       showDialog(
-        context: context, 
-        builder: (context){
-          return const AlertDialog(
-            content: Text("A email was sended look your inbox or spam"),
-          );
-        }
-      );
-    }on FirebaseAuthException catch(e){
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text("A email was sended look your inbox or spam"),
+            );
+          });
+    } on FirebaseAuthException catch (e) {
       showDialog(
-        context: context, 
-        builder: (context){
-          return AlertDialog(
-            content: Text(e.message.toString()),
-          );
-        }
-      );
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-        //test
-        //backgroundColor: const Color.fromARGB(255, 0, 77, 64),
+      backgroundColor: Colors.blueGrey[600],
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
         elevation: 0,
       ),
       body: Column(
@@ -59,47 +56,44 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             child: Text(
               'Enter your email and we will send you a password reset link.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
-                color:  Colors.black,
-                fontSize: 20
-              ),
+              style: GoogleFonts.roboto(color: Colors.white, fontSize: 20),
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
 
           //email textfield
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: TextField(
               controller: _emailController,
-              decoration:  InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.white),
-                borderRadius: BorderRadius.circular(12)
-                ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Color.fromARGB(84, 11, 214, 108)),
-                borderRadius: BorderRadius.circular(12)
-              ),
-              hintText: 'Email',
-              fillColor: Colors.grey[200],
-              filled: true,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(84, 11, 214, 108)),
+                    borderRadius: BorderRadius.circular(12)),
+                hintText: 'Email',
+                fillColor: Colors.grey[200],
+                filled: true,
               ),
             ),
           ),
-          
-          const SizedBox(height: 10,),
+
+          const SizedBox(
+            height: 10,
+          ),
 
           MaterialButton(
             onPressed: passwordReset,
-            color: const Color.fromARGB(84, 11, 214, 108),
+            color: Colors.blueGrey,
             child: const Text('Reset Password'),
-
           )
-
         ],
       ),
     );
-    
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
-
   final VoidCallback showLoginPage;
   const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
 
@@ -12,7 +11,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   //text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -24,33 +22,31 @@ class _RegisterPageState extends State<RegisterPage> {
     _passwordController.dispose();
     _confirmPassword.dispose();
     super.dispose();
-
   }
 
-  bool _passWordConfirmed(){
-    if(_passwordController.text.trim() == _confirmPassword.text.trim()){
-        return true;
-    } else{
+  bool _passWordConfirmed() {
+    if (_passwordController.text.trim() == _confirmPassword.text.trim()) {
+      return true;
+    } else {
       return false;
     }
   }
 
-  Future signUp() async{
-    if(_passWordConfirmed()){
-      try{
+  Future signUp() async {
+    if (_passWordConfirmed()) {
+      try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(), 
+          email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
-      }on FirebaseAuthException catch(w){
+      } on FirebaseAuthException catch (w) {
         showDialog(
-        context: context, 
-        builder: (context){
-          return AlertDialog(
-            content: Text(w.message.toString()),
-          );
-        }
-      );
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(w.message.toString()),
+              );
+            });
       }
     }
   }
@@ -58,19 +54,19 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  const Color.fromARGB(255, 0, 77, 64),//Verde escuro 255, 0, 77, 64 // Verde Claro 75, 0, 191, 165 // Mais ou menos acor da professora 190, 0, 77, 64
-      body:  SafeArea(
+      backgroundColor: Colors
+          .black,
+      body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 //Icon
                 const Image(
-                  image: AssetImage("assets/KS_logo.png"),
+                  image: AssetImage("assets/logo_no_name.png"),
                   width: 200,
-                  ),
+                ),
 
                 //App Name
                 Text(
@@ -81,69 +77,63 @@ class _RegisterPageState extends State<RegisterPage> {
                     fontSize: 42,
                   ),
                 ),
-                const SizedBox(height: 10,),
-                Text(
-                  "Survive If You Can", 
-                  style: GoogleFonts.roboto(
-                    color: Colors.white,
-                    fontSize: 24,
-                    )
-                  ),
-                
-          
-                const SizedBox(height: 30,),
-          
+                const SizedBox(
+                  height: 10,
+                ),
+                Text("Survive If You Can",
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontSize: 24,
+                    )),
+
+                const SizedBox(
+                  height: 30,
+                ),
+
                 //email textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
                     controller: _emailController,
-                    decoration:  InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12)
-                      ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color.fromARGB(84, 11, 214, 108)),
-                      borderRadius: BorderRadius.circular(12)
-                    ),
-                    hintText: 'Email',
-                    fillColor: Colors.grey[200],
-                    filled: true,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(84, 11, 214, 108)),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: 'Email',
+                      fillColor: Colors.grey[200],
+                      filled: true,
                     ),
                   ),
                 ),
 
+                const SizedBox(height: 10),
 
-                
-          
-                const  SizedBox(height: 10),
-          
                 //password textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
                     obscureText: true,
                     controller: _passwordController,
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)
-                        ),
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12)),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color.fromARGB(84, 11, 214, 108)),
-                        borderRadius: BorderRadius.circular(12)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(84, 11, 214, 108)),
+                          borderRadius: BorderRadius.circular(12)),
                       hintText: 'Password',
                       fillColor: Colors.grey[200],
-                      
                       filled: true,
                     ),
                   ),
                 ),
-                
 
-                const  SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 //confirm password textfield
                 Padding(
@@ -151,52 +141,46 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     obscureText: true,
                     controller: _confirmPassword,
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)
-                        ),
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12)),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color.fromARGB(84, 11, 214, 108)),
-                        borderRadius: BorderRadius.circular(12)
-                      ),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(84, 11, 214, 108)),
+                          borderRadius: BorderRadius.circular(12)),
                       hintText: 'Confirm Password',
                       fillColor: Colors.grey[200],
-                      
                       filled: true,
                     ),
                   ),
                 ),
-          
-                const SizedBox(height:  10),
-          
+
+                const SizedBox(height: 10),
+
                 //sgin in button
-                Padding( 
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     onTap: signUp,
                     child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration:  BoxDecoration(
-                        color: const Color.fromARGB(84, 11, 214, 108),
-                        borderRadius: BorderRadius.circular(15)
-                      ),
-                      child: Center(
-                        child:Text(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Center(
+                            child: Text(
                           "Sign Up",
                           style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18
-                          ),//GoogleFonts
-                        )
-                      )
-                    ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18), //GoogleFonts
+                        ))),
                   ),
                 ),
 
                 const SizedBox(height: 25),
-          
+
                 //not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -204,18 +188,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       "I am a member!",
                       style: GoogleFonts.roboto(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold
-                      ),//GoogleFonts
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold), //GoogleFonts
                     ),
                     GestureDetector(
                       onTap: widget.showLoginPage,
                       child: Text(
-                        " Login now", 
+                        " Login now",
                         style: GoogleFonts.roboto(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
-                        ),//GoogleFonts
+                        ), //GoogleFonts
                       ),
                     )
                   ],

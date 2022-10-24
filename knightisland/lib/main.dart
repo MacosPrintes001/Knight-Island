@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'system_pages/splash_page.dart';
 
-void main() async{
+void main() async {
   //doing test
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      
-    ); 
+    );
   }
 }
