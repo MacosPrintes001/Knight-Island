@@ -9,27 +9,22 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-
   final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Center(
-        child: Column (
-          mainAxisAlignment:  MainAxisAlignment.center,
-          children: [
-            Text("Signed in Translate_page as: ${user.email!}" ),
-            MaterialButton(onPressed: () {
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text("Signed in Translate_page as: ${user.email!}"),
+          MaterialButton(
+            onPressed: () {
               FirebaseAuth.instance.signOut();
             },
             color: Colors.greenAccent,
             child: const Text('Sign Out'),
-            )
-          ]
-          ),
-        ),
+          )
+        ]),
+      ),
     );
-    
   }
 }
