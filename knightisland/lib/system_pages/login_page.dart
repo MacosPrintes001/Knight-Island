@@ -48,7 +48,7 @@ class _LoginPage extends State<LoginPage>{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor:  const Color.fromARGB(255, 0, 77, 64),//Verde escuro 255, 0, 77, 64 // Verde Claro 75, 0, 191, 165 // Mais ou menos acor da professora 190, 0, 77, 64
+      backgroundColor:  Colors.black,//Verde escuro 255, 0, 77, 64 // Verde Claro 75, 0, 191, 165 // Mais ou menos acor da professora 190, 0, 77, 64
       body:  SafeArea(
         child: Center(
           child: SingleChildScrollView(
