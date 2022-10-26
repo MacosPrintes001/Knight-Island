@@ -52,7 +52,7 @@ class _LoginPage extends State<LoginPage> {
               children: [
                 //Icon
                 const Image(
-                  image: AssetImage("assets/logo_no_name.png"),
+                  image: AssetImage("assets/logos/logo_no_name.png"),
                   width: 200,
                 ),
 

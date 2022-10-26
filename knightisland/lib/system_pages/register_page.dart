@@ -15,12 +15,14 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPassword = TextEditingController();
+  final _nickController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPassword.dispose();
+    _nickController.dispose();
     super.dispose();
   }
 
@@ -38,6 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
+          
         );
       } on FirebaseAuthException catch (w) {
         showDialog(
@@ -54,8 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors
-          .black,
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -64,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 //Icon
                 const Image(
-                  image: AssetImage("assets/logo_no_name.png"),
+                  image: AssetImage("assets/logos/logo_no_name.png"),
                   width: 200,
                 ),
 
@@ -109,6 +111,27 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
+
+                // const SizedBox(height: 10),
+                // //nick textfield
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                //   child: TextField(
+                //     controller: _nickController,
+                //     decoration: InputDecoration(
+                //       enabledBorder: OutlineInputBorder(
+                //           borderSide: const BorderSide(color: Colors.white),
+                //           borderRadius: BorderRadius.circular(12)),
+                //       focusedBorder: OutlineInputBorder(
+                //           borderSide: const BorderSide(
+                //               color: Color.fromARGB(84, 11, 214, 108)),
+                //           borderRadius: BorderRadius.circular(12)),
+                //       hintText: 'Nick Name',
+                //       fillColor: Colors.grey[200],
+                //       filled: true,
+                //     ),
+                //   ),
+                // ),
 
                 const SizedBox(height: 10),
 
